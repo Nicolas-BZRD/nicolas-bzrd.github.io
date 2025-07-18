@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
             conference: 'ICASSP 2023',
             logoUrl: 'img/video.png',
             links: [
-                { type: 'arXiv', url: 'https://arxiv.org/abs/2303.12916', icon: 'fa-file-pdf' }
+                { type: 'arXiv', url: 'https://arxiv.org/abs/2303.12916', icon: 'fas fa-file-pdf' }
             ]
         }
     ];
