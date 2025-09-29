@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const timelineData = [
         {
             date: '2025',
-            title: "When Does Reasoning Matter? A Controlled Study of Reasoning's Contribution to Model Performance.",
+            title: "When Does Reasoning Matter? A Controlled Study of Reasoning's Contribution to Model Performance",
             authors: 'N Boizard, H Gisserot-Boukhlef, k El Haddad, C Hudelot, P Colombo',
             type: 'main_author efficient_training',
             description: 'Large Language Models (LLMs) with reasoning capabilities have achieved state-of-the-art performance on a wide range of tasks. Despite its empirical success, the tasks and model scales at which reasoning becomes effective, as well as its training and inference costs, remain underexplored. In this work, we rely on a synthetic data distillation framework to conduct a large-scale supervised study. We compare Instruction Fine-Tuning (IFT) and reasoning models of varying sizes, on a wide range of math-centric and general-purpose tasks, evaluating both multiple-choice and open-ended formats. Our analysis reveals that reasoning consistently improves model performance, often matching or surpassing significantly larger IFT systems. Notably, while IFT remains Pareto-optimal in training and inference costs, reasoning models become increasingly valuable as model size scales, overcoming IFT performance limits on reasoning-intensive and open-ended tasks.',
