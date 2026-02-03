@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
             authors: 'H Gisserot-Boukhlef, N Boizard, M Faysse, DM Alves, E Malherbe, ...',
             type: 'main_author efficient_training',
             description: 'Learning high-quality text representations is fundamental to a wide range of NLP tasks. While encoder pretraining has traditionally relied on Masked Language Modeling (MLM), recent evidence suggests that decoder models pretrained with Causal Language Modeling (CLM) can be effectively repurposed as encoders, often surpassing traditional encoders on text representation benchmarks. However, it remains unclear whether these gains reflect an inherent advantage of the CLM objective or arise from confounding factors such as model and data scale. In this paper, we address this question through a series of large-scale, carefully controlled pretraining ablations, training a total of 38 models ranging from 210 million to 1 billion parameters, and conducting over 15,000 fine-tuning and evaluation runs. We find that while training with MLM generally yields better performance across text representation tasks, CLM-trained models are more data-efficient and demonstrate improved fine-tuning stability. Building on these findings, we experimentally show that a biphasic training strategy that sequentially applies CLM and then MLM, achieves optimal performance under a fixed computational training budget. Moreover, we demonstrate that this strategy becomes more appealing when initializing from readily available pretrained CLM models, reducing the computational burden needed to train best-in-class encoder models.',
-            conference: 'arXiv preprint',
+            conference: 'ICLR 2026',
             logoUrl: 'img/mlmvsclm.webp',
             links: [
                 { type: 'arXiv', url: 'https://arxiv.org/pdf/2507.00994', icon: 'fas fa-file-pdf' },
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             authors: 'PH Martins, J Alves, P Fernandes, NM Guerreiro, R Rei, A Farajian, ...',
             type: 'paper large_scale_training',
             description: 'The quality of open-weight LLMs has seen significant improvement, yet they remain predominantly focused on English. In this paper, we introduce the EuroLLM project, aimed at developing a suite of open-weight multilingual LLMs capable of understanding and generating text in all official European Union languages, as well as several additional relevant languages. We outline the progress made to date, detailing our data collection and filtering process, the development of scaling laws, the creation of our multilingual tokenizer, and the data mix and modeling configurations. Additionally, we release our initial models: EuroLLM-1.7B and EuroLLM-1.7B-Instruct and report their performance on multilingual general benchmarks and machine translation.',
-            conference: 'arXiv preprint',
+            conference: 'Technical Report',
             logoUrl: 'img/eurollm.png',
             links: [
                 { type: 'arXiv', url: 'https://arxiv.org/pdf/2506.04079', icon: 'fas fa-file-pdf' },
