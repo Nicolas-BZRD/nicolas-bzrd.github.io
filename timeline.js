@@ -1,12 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
     const timelineData = [
         {
+            date: '2026',
+            title: "EuroLLM-22B: Technical Report",
+            authors: 'MM Ramos, DM Alves, H Gisserot-Boukhlef, J Alves, PH Martins, ...',
+            type: 'paper large_scale_training',
+            description: 'This report presents EuroLLM-22B, a large language model trained from scratch to support the needs of European citizens by covering all 24 official European Union languages and 11 additional languages. EuroLLM addresses the issue of European languages being underrepresented and underserved in existing open large language models. We provide a comprehensive overview of EuroLLM-22B\'s development, including tokenizer design, architectural specifications, data filtering, and training procedures. Across a broad set of multilingual benchmarks, EuroLLM-22B demonstrates strong performance in reasoning, instruction following, and translation, achieving results competitive with models of comparable size. To support future research, we release our base and instruction-tuned models, our multilingual web pretraining data and updated EuroBlocks instruction datasets, as well as our pre-training and evaluation codebases.',
+            conference: 'Technical Report',
+            logoUrl: 'img/eurollm22b.png',
+            links: [
+                { type: 'arXiv', url: 'https://arxiv.org/pdf/2602.05879', icon: 'fas fa-file-pdf' },
+                { type: 'HuggingFace', url: 'https://huggingface.co/collections/utter-project/eurollm', icon: 'fas fa-robot' },
+            ]
+        },
+        {
             date: '2025',
             title: "When Does Reasoning Matter? A Controlled Study of Reasoning's Contribution to Model Performance",
             authors: 'N Boizard, H Gisserot-Boukhlef, k El Haddad, C Hudelot, P Colombo',
-            type: 'main_author efficient_training',
+            type: 'paper main_author efficient_training',
             description: 'Large Language Models (LLMs) with reasoning capabilities have achieved state-of-the-art performance on a wide range of tasks. Despite its empirical success, the tasks and model scales at which reasoning becomes effective, as well as its training and inference costs, remain underexplored. In this work, we rely on a synthetic data distillation framework to conduct a large-scale supervised study. We compare Instruction Fine-Tuning (IFT) and reasoning models of varying sizes, on a wide range of math-centric and general-purpose tasks, evaluating both multiple-choice and open-ended formats. Our analysis reveals that reasoning consistently improves model performance, often matching or surpassing significantly larger IFT systems. Notably, while IFT remains Pareto-optimal in training and inference costs, reasoning models become increasingly valuable as model size scales, overcoming IFT performance limits on reasoning-intensive and open-ended tasks.',
-            conference: 'arXiv preprint',
+            conference: 'Preprint',
             logoUrl: 'img/when_does_reasoning_matter.png',
             links: [
                 { type: 'arXiv', url: 'https://arxiv.org/abs/2509.22193', icon: 'fas fa-file-pdf' },
@@ -17,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             date: '2025',
             title: 'Should We Still Pretrain Encoders with Masked Language Modeling?',
             authors: 'H Gisserot-Boukhlef, N Boizard, M Faysse, DM Alves, E Malherbe, ...',
-            type: 'main_author efficient_training',
+            type: 'paper main_author efficient_training',
             description: 'Learning high-quality text representations is fundamental to a wide range of NLP tasks. While encoder pretraining has traditionally relied on Masked Language Modeling (MLM), recent evidence suggests that decoder models pretrained with Causal Language Modeling (CLM) can be effectively repurposed as encoders, often surpassing traditional encoders on text representation benchmarks. However, it remains unclear whether these gains reflect an inherent advantage of the CLM objective or arise from confounding factors such as model and data scale. In this paper, we address this question through a series of large-scale, carefully controlled pretraining ablations, training a total of 38 models ranging from 210 million to 1 billion parameters, and conducting over 15,000 fine-tuning and evaluation runs. We find that while training with MLM generally yields better performance across text representation tasks, CLM-trained models are more data-efficient and demonstrate improved fine-tuning stability. Building on these findings, we experimentally show that a biphasic training strategy that sequentially applies CLM and then MLM, achieves optimal performance under a fixed computational training budget. Moreover, we demonstrate that this strategy becomes more appealing when initializing from readily available pretrained CLM models, reducing the computational burden needed to train best-in-class encoder models.',
             conference: 'ICLR 2026',
             logoUrl: 'img/mlmvsclm.webp',
@@ -37,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
             logoUrl: 'img/eurollm.png',
             links: [
                 { type: 'arXiv', url: 'https://arxiv.org/pdf/2506.04079', icon: 'fas fa-file-pdf' },
-                { type: 'HuggingFace', url: 'https://huggingface.co/collections/utter-project/eurollm-66b2bd5402f755e41c5d9c6d', icon: 'fas fa-robot' },
+                { type: 'HuggingFace', url: 'https://huggingface.co/collections/utter-project/eurollm', icon: 'fas fa-robot' },
             ]
         },
         {
