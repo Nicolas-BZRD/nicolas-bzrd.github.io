@@ -10,13 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             date: '2026',
             type: 'news',
-            title: 'Invited talk at Cohere on BidirLM',
-            icon: 'fas fa-microphone'
-        },
-        {
-            date: '2026',
-            type: 'news',
-            title: 'Invited talk at eBay on BidirLM',
+            title: 'Invited talks at Cohere and eBay on BidirLM',
             icon: 'fas fa-microphone'
         },
         {
@@ -170,13 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             date: '2025',
             type: 'news',
-            title: 'Invited talk at Cohere on EuroBERT',
-            icon: 'fas fa-microphone'
-        },
-        {
-            date: '2025',
-            type: 'news',
-            title: 'Invited talk at Meta Paris on EuroBERT',
+            title: 'Invited talks at Cohere and Meta Paris on EuroBERT',
             icon: 'fas fa-microphone'
         },
         {
