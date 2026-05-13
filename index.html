@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Official portfolio of Nicolas Boizard, a PhD student in Natural Language Processing (NLP) at CentraleSupélec, Université Paris-Saclay. Specializing in optimizing Large Language Model (LLM) adaptation, compression, and evaluation for real-world NLP applications, including large-scale multilingual model training (EuroBERT, EuroLLM, CroissantLLM) and efficient knowledge distillation techniques (Universal Logit Distillation Loss). Explore his research, publications, and invited talks.">
-    <meta name="keywords" content="NLP, Natural Language Processing, Machine Learning, PhD Student, Large Language Models, LLM, Transformers, AI Research, Nicolas Boizard, CentraleSupélec, Université Paris-Saclay, EuroBERT, EuroLLM, CroissantLLM, Knowledge Distillation, Universal Logit Distillation Loss, Applied NLP, AI Optimization, Model Compression, Diabolocom">
+    <meta name="description" content="Nicolas Boizard — NLP researcher and PhD student at CentraleSupélec. Large-scale LLM training (EuroBERT, EuroLLM, CroissantLLM) and efficient distillation.">
     <meta name="author" content="Nicolas Boizard">
-    <title>Nicolas Boizard - NLP Researcher | PhD Student in Large Language Models</title>
+    <link rel="canonical" href="https://nicolas-bzrd.github.io/">
+    <title>Nicolas Boizard — NLP Researcher & LLM PhD Student</title>
     <link rel="icon" type="image/x-icon" href="img/favicon.png">
-    <meta property="og:title" content="Nicolas Boizard - NLP Researcher | PhD Student in Large Language Models">
-    <meta property="og:description" content="Official portfolio of Nicolas Boizard, a PhD student in Natural Language Processing (NLP) at CentraleSupélec, Université Paris-Saclay. Specializing in optimizing Large Language Model (LLM) adaptation, compression, and evaluation for real-world NLP applications.">
+    <meta property="og:title" content="Nicolas Boizard — NLP Researcher & LLM PhD Student">
+    <meta property="og:description" content="NLP researcher and PhD student at CentraleSupélec. Large-scale LLM training (EuroBERT, EuroLLM, CroissantLLM) and efficient distillation.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nicolas-bzrd.github.io">
+    <meta property="og:url" content="https://nicolas-bzrd.github.io/">
     <meta property="og:image" content="https://nicolas-bzrd.github.io/img/nicolas_boizard.png">
+    <meta property="og:image:width" content="200">
+    <meta property="og:image:height" content="200">
     <meta property="og:image:alt" content="Portrait of Nicolas Boizard, NLP PhD Student">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@Nicolas_BZRD">
-    <meta name="twitter:creator" content="@Nicolas_BZRD">
-    <meta name="twitter:title" content="Nicolas Boizard - NLP Researcher | PhD Student in Large Language Models">
-    <meta name="twitter:description" content="Official portfolio of Nicolas Boizard, a PhD student in Natural Language Processing (NLP) at CentraleSupélec, Université Paris-Saclay. Specializing in optimizing Large Language Model (LLM) adaptation, compression, and evaluation for real-world NLP applications.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@N1colAIs">
+    <meta name="twitter:creator" content="@N1colAIs">
+    <meta name="twitter:title" content="Nicolas Boizard — NLP Researcher & LLM PhD Student">
+    <meta name="twitter:description" content="NLP researcher and PhD student at CentraleSupélec. Large-scale LLM training (EuroBERT, EuroLLM, CroissantLLM) and efficient distillation.">
     <meta name="twitter:image" content="https://nicolas-bzrd.github.io/img/nicolas_boizard.png">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -32,11 +34,125 @@
       "name": "Nicolas Boizard",
       "image": "https://nicolas-bzrd.github.io/img/nicolas_boizard.png",
       "jobTitle": "PhD student in Natural Language Processing",
-      "url": "https://nicolas-bzrd.github.io",
+      "url": "https://nicolas-bzrd.github.io/",
+      "affiliation": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "CentraleSupélec, Université Paris-Saclay",
+          "url": "https://www.centralesupelec.fr/"
+        },
+        {
+          "@type": "Organization",
+          "name": "Diabolocom",
+          "url": "https://www.diabolocom.com/"
+        }
+      ],
+      "knowsAbout": [
+        "Natural Language Processing",
+        "Large Language Models",
+        "Knowledge Distillation",
+        "Multilingual NLP",
+        "Model Compression",
+        "Machine Learning"
+      ],
       "sameAs": [
-        "https://www.linkedin.com/in/nicolas-boizard/",
+        "https://linkedin.com/in/nicolas-boizard",
         "https://github.com/Nicolas-BZRD",
-        "https://scholar.google.com/citations?user=B-jY8EkAAAAJ&hl=fr&oi=ao"
+        "https://scholar.google.com/citations?user=B-jY8EkAAAAJ&hl=en",
+        "https://huggingface.co/Nicolas-BZRD",
+        "https://x.com/N1colAIs"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "BidirLM: From Text to Omnimodal Bidirectional Encoders by Adapting and Composing Causal LLMs",
+          "author": "Nicolas Boizard, T Deschamps-Berger, H Gisserot-Boukhlef, C Hudelot, P Colombo",
+          "datePublished": "2026",
+          "url": "https://arxiv.org/abs/2604.02045",
+          "abstract": "Transforming causal generative LLMs into bidirectional encoders. Through ablations on Gemma3 and Qwen3, we identify key adaptation factors, introduce a weight-merging + multi-domain data mixture recipe that avoids catastrophic forgetting, and release BidirLM — a family of five encoders outperforming alternatives on text, vision, and audio representation benchmarks."
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "BERT-as-a-Judge: A Robust Alternative to Lexical Methods for Efficient Reference-Based LLM Evaluation",
+          "author": "H Gisserot-Boukhlef, Nicolas Boizard, E Malherbe, C Hudelot, P Colombo",
+          "datePublished": "2026",
+          "url": "https://arxiv.org/abs/2604.09497",
+          "abstract": "An empirical study across 36 models and 15 tasks showing lexical evaluation methods correlate poorly with human judgments. Introduces BERT-as-a-Judge, an encoder-driven approach to reference-based generative evaluation that matches much larger LLM judges at a fraction of the cost."
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "EuroLLM-22B: Technical Report",
+          "author": "Nicolas Boizard et al.",
+          "datePublished": "2026",
+          "url": "https://arxiv.org/pdf/2602.05879",
+          "abstract": "EuroLLM-22B is a large multilingual language model covering all 24 official EU languages plus 11 additional languages, with competitive performance on reasoning, instruction following, and translation."
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "When Does Reasoning Matter? A Controlled Study of Reasoning's Contribution to Model Performance",
+          "author": "Nicolas Boizard, H Gisserot-Boukhlef, K El Haddad, C Hudelot, P Colombo",
+          "datePublished": "2025",
+          "url": "https://arxiv.org/abs/2509.22193",
+          "abstract": "A large-scale controlled study comparing Instruction Fine-Tuning and reasoning models across math-centric and general-purpose tasks, showing reasoning becomes increasingly valuable as model size scales."
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Should We Still Pretrain Encoders with Masked Language Modeling?",
+          "author": "H Gisserot-Boukhlef, Nicolas Boizard, M Faysse, DM Alves, E Malherbe, et al.",
+          "datePublished": "2025",
+          "url": "https://arxiv.org/pdf/2507.00994",
+          "isPartOf": "ICLR 2026",
+          "abstract": "Controlled pretraining ablations across 38 models (210M–1B params) showing MLM yields better text-representation performance while CLM is more data-efficient; a biphasic CLM-then-MLM strategy is optimal."
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "EuroLLM-9B: Technical Report",
+          "author": "PH Martins, J Alves, P Fernandes, NM Guerreiro, R Rei, A Farajian, et al.",
+          "datePublished": "2025",
+          "url": "https://arxiv.org/pdf/2506.04079",
+          "abstract": "Introduces EuroLLM, a suite of open-weight multilingual LLMs for all EU languages, with details on data, scaling laws, tokenizer, and the release of EuroLLM-1.7B."
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "EuroBERT: Scaling Multilingual Encoders for European Languages",
+          "author": "Nicolas Boizard, H Gisserot-Boukhlef, DM Alves, A Martins, A Hammal, C Corro, et al.",
+          "datePublished": "2025",
+          "url": "https://arxiv.org/pdf/2503.05500",
+          "isPartOf": "COLM 2025",
+          "abstract": "A family of multilingual encoders for European and global languages, outperforming existing alternatives across multilingual, math, and coding tasks with up to 8,192 token contexts."
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Towards cross-tokenizer distillation: the Universal Logit Distillation loss for LLMs",
+          "author": "Nicolas Boizard, K El Haddad, C Hudelot, P Colombo",
+          "datePublished": "2024",
+          "url": "https://arxiv.org/abs/2402.12030",
+          "isPartOf": "TMLR 2025",
+          "abstract": "Universal Logit Distillation (ULD) uses optimal transport to enable knowledge distillation across model architectures and tokenizers, removing the shared-tokenizer constraint of prior logit-based methods."
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "CroissantLLM: A truly bilingual French-English language model",
+          "author": "M Faysse, P Fernandes, N Guerreiro, A Loison, D Alves, C Corro, et al.",
+          "datePublished": "2024",
+          "url": "https://arxiv.org/abs/2402.00786",
+          "isPartOf": "TMLR 2025",
+          "abstract": "A 1.3B bilingual French-English LLM trained on 3T tokens with a 1:1 language ratio, released with the FrenchBench benchmark and dozens of checkpoints."
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Deep learning-based stereo camera multi-video synchronization",
+          "author": "Nicolas Boizard, K El Haddad, T Ravet, F Cresson, T Dutoit",
+          "datePublished": "2023",
+          "url": "https://arxiv.org/abs/2303.12916",
+          "isPartOf": "ICASSP 2023",
+          "abstract": "A comparison of deep learning approaches for software-based synchronization of stereo camera video streams."
+        }
       ]
     }
     </script>
@@ -44,8 +160,8 @@
 <body class="bg-gray-50 text-gray-800">
     <header class="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-gray-900">Nicolas Boizard</h1>
-            <nav class="hidden md:flex space-x-6">
+            <a href="#about" class="text-2xl font-bold text-gray-900">Nicolas Boizard</a>
+            <nav class="hidden md:flex space-x-6" aria-label="Primary">
                 <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors">About Nicolas</a>
                 <a href="#timeline" class="text-gray-600 hover:text-blue-600 transition-colors">Research Timeline</a>
             </nav>
@@ -59,14 +175,14 @@
                 <img class="w-60 h-60 rounded-full mx-auto md:mx-0 shadow-lg" src="img/nicolas_boizard.png" alt="Nicolas Boizard, PhD student in Natural Language Processing">
             </div>
             <div class="md:w-4/5 md:pl-12">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">About Me - NLP Research & Large Language Models</h2>
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">Nicolas Boizard — NLP Researcher & PhD Student in Large Language Models</h1>
                 <p class="text-lg text-gray-700 mb-6">
-                    Hi there! I'm <b>Nicolas Boizard</b>, a 2nd-year PhD student at CentraleSupélec (Université Paris-Saclay), diving deep into applied NLP with my supervisor, Pierre Colombo.<br><br>
-                    My research centers on <b>large-scale training of encoder and decoder models</b>, including multilingual ones such as <b>EuroBERT, EuroLLM, and CroissantLLM</b>. To address the high costs associated with this, I'm also developing <b>efficient techniques</b> like the <b>Universal Logit Distillation Loss</b>, which allows for distillation across different model architectures. These works have led to invited talks at organizations like Meta and Cohere.<br><br>
+                    Hi there! I'm <b>Nicolas Boizard</b>, a final-year PhD student at CentraleSupélec (Université Paris-Saclay), diving deep into applied NLP with my supervisor, Pierre Colombo.<br><br>
+                    My research centers on <b>large-scale training of encoder and decoder models</b>, including multilingual and multimodal ones such as <b>BidirLM-Omni, EuroBERT, EuroLLM, and CroissantLLM</b>. To address the high costs associated with this, I'm also developing <b>efficient techniques</b> like the <b>Universal Logit Distillation Loss</b>, which allows for distillation across different model architectures. These works have led to invited talks at Meta, Cohere, eBay, and NVIDIA.<br><br>
                     My PhD is funded through a CIFRE program with Diabolocom, where I also advise their R&D on various LLM projects. I'm always open to connecting, collaborating, or discussing potential speaking engagements!
                 </p>
                 <div class="flex flex-wrap justify-center md:justify-start gap-3">
-                    <a href="https://scholar.google.com/citations?user=9S_CeTMAAAAJ&hl=en&oi=ao" class="text-gray-600 hover:text-blue-600 transition-colors flex items-center" target="_blank" rel="noopener noreferrer" title="Nicolas Boizard's Google Scholar Profile">
+                    <a href="https://scholar.google.com/citations?user=B-jY8EkAAAAJ&hl=en" class="text-gray-600 hover:text-blue-600 transition-colors flex items-center" target="_blank" rel="noopener noreferrer" title="Nicolas Boizard's Google Scholar Profile">
                         <i class="fas fa-graduation-cap mr-1"></i> Google Scholar
                     </a>
                     <a href="https://huggingface.co/Nicolas-BZRD" class="text-gray-600 hover:text-blue-600 transition-colors flex items-center" target="_blank" rel="noopener noreferrer" title="Nicolas Boizard's Hugging Face Profile">
@@ -78,7 +194,7 @@
                     <a href="https://github.com/Nicolas-BZRD" class="text-gray-600 hover:text-blue-600 transition-colors flex items-center" target="_blank" rel="noopener noreferrer" title="Nicolas Boizard's GitHub Profile">
                         <i class="fab fa-github mr-1"></i> GitHub
                     </a>
-                    <a href="https://www.linkedin.com/in/nicolas-boizard/" class="text-gray-600 hover:text-blue-600 transition-colors flex items-center" target="_blank" rel="noopener noreferrer" title="Nicolas Boizard's LinkedIn Profile">
+                    <a href="https://linkedin.com/in/nicolas-boizard" class="text-gray-600 hover:text-blue-600 transition-colors flex items-center" target="_blank" rel="noopener noreferrer" title="Nicolas Boizard's LinkedIn Profile">
                         <i class="fab fa-linkedin mr-1"></i> LinkedIn
                     </a>
                 </div>

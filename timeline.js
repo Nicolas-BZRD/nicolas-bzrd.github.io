@@ -2,6 +2,72 @@ document.addEventListener('DOMContentLoaded', function() {
     const timelineData = [
         {
             date: '2026',
+            type: 'news',
+            title: 'BidirLM-Omni 2.5B ranks first on MTEB (open source), MIEB, and MAEB — at its size and up to 7B',
+            icon: 'fas fa-star',
+            link: 'https://huggingface.co/spaces/mteb/leaderboard'
+        },
+        {
+            date: '2026',
+            type: 'news',
+            title: 'Invited talk at Cohere on BidirLM',
+            icon: 'fas fa-microphone'
+        },
+        {
+            date: '2026',
+            type: 'news',
+            title: 'Invited talk at eBay on BidirLM',
+            icon: 'fas fa-microphone'
+        },
+        {
+            date: '2026',
+            title: 'BidirLM: From Text to Omnimodal Bidirectional Encoders by Adapting and Composing Causal LLMs',
+            authors: 'N Boizard, T Deschamps-Berger, H Gisserot-Boukhlef, C Hudelot, P Colombo',
+            type: 'paper main_author efficient_training',
+            description: 'Transforming causal generative language models into bidirectional encoders offers a powerful alternative to BERT-style architectures. However, current approaches remain limited: they lack consensus on optimal training objectives, suffer from catastrophic forgetting at scale, and fail to flexibly integrate the vast ecosystem of specialized generative models. In this work, through systematic ablations on the Gemma3 and Qwen3 families, we identify the key factors driving successful adaptation, highlighting the critical role of an often-omitted prior masking phase. To scale this process without original pre-training data, we introduce a dual strategy combining linear weight merging with a lightweight multi-domain data mixture that mitigates catastrophic forgetting. Finally, we augment our encoders by merging them with specialized causal models, seamlessly transferring modality- and domain-specific capabilities. This open-source recipe, designed for any causal decoder LLM, yields BidirLM, a family of five encoders that outperform alternatives on text, vision, and audio representation benchmarks.',
+            conference: 'Preprint',
+            logoUrl: 'img/bidirlm.webp',
+            links: [
+                { type: 'arXiv', url: 'https://arxiv.org/abs/2604.02045', icon: 'fas fa-file-pdf' },
+                { type: 'HuggingFace', url: 'https://huggingface.co/BidirLM', icon: 'fas fa-robot' },
+            ]
+        },
+        {
+            date: '2026',
+            title: 'BERT-as-a-Judge: A Robust Alternative to Lexical Methods for Efficient Reference-Based LLM Evaluation',
+            authors: 'H Gisserot-Boukhlef, N Boizard, E Malherbe, C Hudelot, P Colombo',
+            type: 'paper efficient_training',
+            description: 'Accurate evaluation is central to the large language model (LLM) ecosystem, guiding model selection and downstream adoption across diverse use cases. In practice, however, evaluating generative outputs typically relies on rigid lexical methods to extract and assess answers, which can conflate a model\'s true problem-solving ability with its compliance with predefined formatting guidelines. While recent LLM-as-a-Judge approaches mitigate this issue by assessing semantic correctness rather than strict structural conformity, they also introduce substantial computational overhead, making evaluation costly. In this work, we first systematically investigate the limitations of lexical evaluation through a large-scale empirical study spanning 36 models and 15 downstream tasks, demonstrating that such methods correlate poorly with human judgments. To address this limitation, we introduce BERT-as-a-Judge, an encoder-driven approach for assessing answer correctness in reference-based generative settings, robust to variations in output phrasing, and requiring only lightweight training on synthetically annotated question-candidate-reference triplets. We show that it consistently outperforms the lexical baseline while matching the performance of much larger LLM judges, providing a compelling tradeoff between the two and enabling reliable, scalable evaluation. Finally, through extensive experimentation, we provide detailed insights into BERT-as-a-Judge\'s performance to offer practical guidance for practitioners, and release all project artifacts to foster downstream adoption.',
+            conference: 'Preprint',
+            logoUrl: 'img/bert_judge.png',
+            links: [
+                { type: 'arXiv', url: 'https://arxiv.org/abs/2604.09497', icon: 'fas fa-file-pdf' },
+                { type: 'HuggingFace', url: 'https://huggingface.co/collections/Nicolas-BZRD/bert-as-a-judge', icon: 'fas fa-robot' },
+            ]
+        },
+        {
+            date: '2026',
+            type: 'news',
+            title: 'EuroBERT powers Jina-nano (1st on MTEB) — 1M+ downloads on Hugging Face',
+            icon: 'fas fa-star',
+            link: 'https://huggingface.co/jinaai/jina-embeddings-v5-text-nano'
+        },
+        {
+            date: '2026',
+            type: 'news',
+            title: 'Le Monde Informatique — EuroLLM-22B parie sur un modèle open source et multilingue.',
+            icon: 'fas fa-newspaper',
+            link: 'https://www.lemondeinformatique.fr/actualites/lire-eurollm-22b-parie-sur-un-modele-open-source-et-multilingue-98963.html'
+        },
+        {
+            date: '2026',
+            type: 'news',
+            title: 'Usine Digitale — EuroLLM-22B, le modèle open source porté par un consortium d\'acteurs européens.',
+            icon: 'fas fa-newspaper',
+            link: 'https://www.usine-digitale.fr/intelligence-artificielle/ia-generative/eurollm-22b-le-modele-open-source-porte-par-un-consortium-dacteurs-europeens.JFLFB5EDDBBOTNGRUAXGHIOB7Q.html'
+        },
+        {
+            date: '2026',
             title: "EuroLLM-22B: Technical Report",
             authors: 'MM Ramos, DM Alves, H Gisserot-Boukhlef, J Alves, PH Martins, ...',
             type: 'paper large_scale_training',
@@ -12,6 +78,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 { type: 'arXiv', url: 'https://arxiv.org/pdf/2602.05879', icon: 'fas fa-file-pdf' },
                 { type: 'HuggingFace', url: 'https://huggingface.co/collections/utter-project/eurollm', icon: 'fas fa-robot' },
             ]
+        },
+        {
+            date: '2025',
+            type: 'news',
+            title: 'ULD Loss powers Hugging Face\'s on-policy distillation framework',
+            icon: 'fas fa-star',
+            link: 'https://huggingface.co/spaces/HuggingFaceH4/on-policy-distillation'
+        },
+        {
+            date: '2025',
+            type: 'news',
+            title: 'EuroBERT reached 300k+ downloads on Hugging Face',
+            icon: 'fas fa-star',
+            link: 'https://huggingface.co/EuroBERT'
         },
         {
             date: '2025',
@@ -28,6 +108,12 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             date: '2025',
+            type: 'news',
+            title: 'Invited talk at NVIDIA on EuroBERT & MLM vs CLM',
+            icon: 'fas fa-microphone'
+        },
+        {
+            date: '2025',
             title: 'Should We Still Pretrain Encoders with Masked Language Modeling?',
             authors: 'H Gisserot-Boukhlef, N Boizard, M Faysse, DM Alves, E Malherbe, ...',
             type: 'paper main_author efficient_training',
@@ -37,8 +123,22 @@ document.addEventListener('DOMContentLoaded', function() {
             links: [
                 { type: 'arXiv', url: 'https://arxiv.org/pdf/2507.00994', icon: 'fas fa-file-pdf' },
                 { type: 'HuggingFace', url: 'https://huggingface.co/MLMvsCLM', icon: 'fas fa-robot' },
-                { type: 'GitHub', url: 'https://github.com/Nicolas-BZRD/EuroBERT', icon: 'fab fab fa-github' },
+                { type: 'GitHub', url: 'https://github.com/Nicolas-BZRD/EuroBERT', icon: 'fab fa-github' },
             ]
+        },
+        {
+            date: '2025',
+            type: 'news',
+            title: 'ULD Loss added to the Axolotl training library',
+            icon: 'fas fa-star',
+            link: 'https://github.com/axolotl-ai-cloud/axolotl'
+        },
+        {
+            date: '2025',
+            type: 'news',
+            title: 'Journal du Net — EuroLLM-9B, l\'autre IA européenne de référence taillée pour les entreprises.',
+            icon: 'fas fa-newspaper',
+            link: 'https://www.journaldunet.com/intelligence-artificielle/1539559-eurollm-9b-l-autre-ia-europeenne-de-reference-taillee-pour-les-entreprises/'
         },
         {
             date: '2025',
@@ -52,6 +152,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 { type: 'arXiv', url: 'https://arxiv.org/pdf/2506.04079', icon: 'fas fa-file-pdf' },
                 { type: 'HuggingFace', url: 'https://huggingface.co/collections/utter-project/eurollm', icon: 'fas fa-robot' },
             ]
+        },
+        {
+            date: '2025',
+            type: 'news',
+            title: 'ActuIA — IA et NLP : EuroBert, l\'encodeur multilingue au service des langues européennes.',
+            icon: 'fas fa-newspaper',
+            link: 'https://www.actuia.com/actualite/ia-et-nlp-eurobert-lencodeur-multilingue-au-service-des-langues-europeennes/'
+        },
+        {
+            date: '2025',
+            type: 'news',
+            title: 'Heise — AI model BERT learns European: EuroBERT presented.',
+            icon: 'fas fa-newspaper',
+            link: 'https://www.heise.de/en/news/AI-model-BERT-learns-European-EuroBERT-presented-10329005.html'
+        },
+        {
+            date: '2025',
+            type: 'news',
+            title: 'Invited talk at Cohere on EuroBERT',
+            icon: 'fas fa-microphone'
+        },
+        {
+            date: '2025',
+            type: 'news',
+            title: 'Invited talk at Meta Paris on EuroBERT',
+            icon: 'fas fa-microphone'
         },
         {
             date: '2025',
@@ -80,6 +206,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 { type: 'HuggingFace', url: 'https://huggingface.co/collections/Nicolas-BZRD/uld-loss-universal-llms-distillation-65cfa07f1e4ed7404502a9eb', icon: 'fas fa-robot' },
                 { type: 'GitHub', url: 'https://github.com/Nicolas-BZRD/llm-recipes', icon: 'fab fa-github' },
             ]
+        },
+        {
+            date: '2024',
+            type: 'news',
+            title: 'Usine Nouvelle — CroissantLLM, l\'IA générative dédiée à la langue française, utilisable [...] sur PC et smartphone.',
+            icon: 'fas fa-newspaper',
+            link: 'https://www.usinenouvelle.com/editorial/croissantllm-l-ia-generative-dediee-la-langue-francaise-utilisable-en-open-source-sur-pc-et-smartphone.N2209739'
+        },
+        {
+            date: '2024',
+            type: 'news',
+            title: 'Usine Digitale — CroissantLLM, des chercheurs de CentraleSupélec lancent un modèle d\'IA open source et bilingue.',
+            icon: 'fas fa-newspaper',
+            link: 'https://www.usine-digitale.fr/article/croissantllm-des-chercheurs-de-centralesupelec-lancent-un-modele-d-ia-open-source-et-bilingue.N2209348'
         },
         {
             date: '2024',
@@ -118,6 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ? timelineData
             : timelineData.filter(item => {
                 const itemTypes = item.type.split(' ');
+                if (itemTypes.includes('news')) return false;
                 return itemTypes.includes(filter);
             });
 
@@ -127,6 +268,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         filteredData.forEach(item => {
+            if (item.type && item.type.split(' ').includes('news')) {
+                const newsLink = item.link ? `
+                    <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="ml-2 text-gray-500 hover:text-blue-600 text-xs">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                ` : '';
+                const newsIcon = item.icon || 'fas fa-bullhorn';
+                timelineContainer.innerHTML += `
+                    <div class="mb-8 relative">
+                        <div class="timeline-dot absolute left-0 top-2 w-2.5 h-2.5 bg-gray-300 rounded-full border-2 border-white"></div>
+                        <div class="ml-10">
+                            <p class="text-xs text-gray-400 mb-1 font-medium">${item.date}</p>
+                            <div class="inline-flex items-center text-gray-500 text-sm italic">
+                                <i class="${newsIcon} text-gray-400 mr-2"></i>
+                                <span>${item.title}</span>
+                                ${newsLink}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
             const linksHTML = item.links.map(link => `
                 <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-gray-100 hover:bg-blue-100 text-gray-800 hover:text-blue-700 text-sm font-medium py-2 px-4 rounded-lg transition-colors">
                     <i class="fa-fw ${link.icon}" style="font-size: 1em; min-width: 1.2em; text-align: center; margin-right: 0.5rem;"></i>
@@ -138,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const logoHTML = `
                 <div class="w-24 h-24 mb-4 md:mb-0 md:mr-6 flex-shrink-0">
-                    <img src="${logoSrc}" alt="${item.conference ? item.conference : item.title} Logo" class="w-full h-full object-cover rounded-lg shadow-md">
+                    <img src="${logoSrc}" alt="${item.conference ? item.conference : item.title} Logo" loading="lazy" decoding="async" class="w-full h-full object-cover rounded-lg shadow-md">
                 </div>
             `;
 
