@@ -1,0 +1,44 @@
+# Nicolas Boizard
+
+> NLP Researcher & PhD Student in Large Language Models. Final-year PhD student at CentraleSupélec (Université Paris-Saclay), advised by Pierre Colombo and Céline Hudelot. Research on large-scale training of encoder and decoder models, including multilingual and multimodal ones (BidirLM-Omni, EuroBERT, EuroLLM, CroissantLLM), and on efficient techniques such as the Universal Logit Distillation Loss for cross-tokenizer distillation. CIFRE PhD with Diabolocom.
+
+Machine-readable copies of everything on this site: [timeline.json](https://nicolas-bzrd.github.io/data/timeline.json) (all entries, structured), [publications.md](https://nicolas-bzrd.github.io/publications.md) (full abstracts, plain text). The home page also embeds schema.org JSON-LD (`ProfilePage`, `Person`, `ScholarlyArticle`).
+
+## Publications
+
+- [BidirLM: From Text to Omnimodal Bidirectional Encoders by Adapting and Composing Causal LLMs](https://arxiv.org/abs/2604.02045): 2026 — COLM 2026. N Boizard, T Deschamps-Berger, H Gisserot-Boukhlef, C Hudelot, P Colombo
+- [BERT-as-a-Judge: A Robust Alternative to Lexical Methods for Efficient Reference-Based LLM Evaluation](https://arxiv.org/abs/2604.09497): 2026 — COLM 2026. H Gisserot-Boukhlef, N Boizard, E Malherbe, C Hudelot, P Colombo
+- [EuroLLM-22B: Technical Report](https://arxiv.org/pdf/2602.05879): 2026 — Technical Report. MM Ramos, DM Alves, H Gisserot-Boukhlef, J Alves, PH Martins, ...
+- [Scale or Reason? A Compute-Equivalent Analysis of Reasoning Distillation](https://arxiv.org/abs/2509.22193): 2025 — EMNLP 2026. N Boizard, H Gisserot-Boukhlef, K El Haddad, C Hudelot, P Colombo
+- [Should We Still Pretrain Encoders with Masked Language Modeling?](https://arxiv.org/pdf/2507.00994): 2025 — ICLR 2026. H Gisserot-Boukhlef, N Boizard, M Faysse, DM Alves, E Malherbe, ...
+- [EuroLLM-9B: Technical Report](https://arxiv.org/pdf/2506.04079): 2025 — Technical Report. PH Martins, J Alves, P Fernandes, NM Guerreiro, R Rei, A Farajian, ...
+- [EuroBERT: Scaling Multilingual Encoders for European Languages](https://arxiv.org/pdf/2503.05500): 2025 — COLM 2025. N Boizard, H Gisserot-Boukhlef, DM Alves, A Martins, A Hammal, C Corro, ...
+- [Towards cross-tokenizer distillation: the universal logit distillation loss for LLMs](https://arxiv.org/abs/2402.12030): 2024 — TMLR 2025. N Boizard, K El Haddad, C Hudelot, P Colombo
+- [Croissantllm: A truly bilingual french-english language model](https://arxiv.org/abs/2402.00786): 2024 — TMLR 2025. M Faysse, P Fernandes, N Guerreiro, A Loison, D Alves, C Corro, ...
+- [Deep learning-based stereo camera multi-video synchronization](https://arxiv.org/abs/2303.12916): 2023 — ICASSP 2023. N Boizard, K El Haddad, T Ravet, F Cresson, T Dutoit
+
+## News and talks
+
+- 2026: [BidirLM-Omni 2.5B ranks first on MTEB (open source), MIEB, and MAEB — at its size and up to 7B](https://huggingface.co/spaces/mteb/leaderboard)
+- 2026: Invited talks at Cohere and eBay on BidirLM
+- 2026: [EuroBERT powers Jina-nano (1st on MTEB) — 1M+ downloads on Hugging Face](https://huggingface.co/jinaai/jina-embeddings-v5-text-nano)
+- 2026: [Le Monde Informatique — EuroLLM-22B parie sur un modèle open source et multilingue.](https://www.lemondeinformatique.fr/actualites/lire-eurollm-22b-parie-sur-un-modele-open-source-et-multilingue-98963.html)
+- 2026: [Usine Digitale — EuroLLM-22B, le modèle open source porté par un consortium d'acteurs européens.](https://www.usine-digitale.fr/intelligence-artificielle/ia-generative/eurollm-22b-le-modele-open-source-porte-par-un-consortium-dacteurs-europeens.JFLFB5EDDBBOTNGRUAXGHIOB7Q.html)
+- 2025: [ULD Loss powers Hugging Face's on-policy distillation framework](https://huggingface.co/spaces/HuggingFaceH4/on-policy-distillation)
+- 2025: [EuroBERT reached 300k+ downloads on Hugging Face](https://huggingface.co/EuroBERT)
+- 2025: Invited talk at NVIDIA on EuroBERT & MLM vs CLM
+- 2025: [ULD Loss added to the Axolotl training library](https://github.com/axolotl-ai-cloud/axolotl)
+- 2025: [Journal du Net — EuroLLM-9B, l'autre IA européenne de référence taillée pour les entreprises.](https://www.journaldunet.com/intelligence-artificielle/1539559-eurollm-9b-l-autre-ia-europeenne-de-reference-taillee-pour-les-entreprises/)
+- 2025: [ActuIA — IA et NLP : EuroBert, l'encodeur multilingue au service des langues européennes.](https://www.actuia.com/actualite/ia-et-nlp-eurobert-lencodeur-multilingue-au-service-des-langues-europeennes/)
+- 2025: [Heise — AI model BERT learns European: EuroBERT presented.](https://www.heise.de/en/news/AI-model-BERT-learns-European-EuroBERT-presented-10329005.html)
+- 2025: Invited talks at Cohere and Meta Paris on EuroBERT
+- 2024: [Usine Nouvelle — CroissantLLM, l'IA générative dédiée à la langue française, utilisable [...] sur PC et smartphone.](https://www.usinenouvelle.com/editorial/croissantllm-l-ia-generative-dediee-la-langue-francaise-utilisable-en-open-source-sur-pc-et-smartphone.N2209739)
+- 2024: [Usine Digitale — CroissantLLM, des chercheurs de CentraleSupélec lancent un modèle d'IA open source et bilingue.](https://www.usine-digitale.fr/article/croissantllm-des-chercheurs-de-centralesupelec-lancent-un-modele-d-ia-open-source-et-bilingue.N2209348)
+
+## Profiles
+
+- [Google Scholar](https://scholar.google.com/citations?user=B-jY8EkAAAAJ&hl=en)
+- [Hugging Face](https://huggingface.co/Nicolas-BZRD)
+- [X (formerly Twitter)](https://x.com/N1colAIs)
+- [GitHub](https://github.com/Nicolas-BZRD)
+- [LinkedIn](https://linkedin.com/in/nicolas-boizard)

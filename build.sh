@@ -1,7 +1,10 @@
 #!/bin/bash
-# Rebuilds tailwind.css from tailwind.input.css.
-# Run this whenever you add new Tailwind utility classes to index.html or timeline.js.
+# Rebuilds the whole site from data/*.json, then rebuilds tailwind.css.
+# Run after editing anything in data/. See README.md.
 set -e
+cd "$(dirname "$0")"
+
+python3 build.py
 
 BINARY="bin/tailwindcss"
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')

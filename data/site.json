@@ -1,0 +1,61 @@
+{
+  "url": "https://nicolas-bzrd.github.io",
+  "name": "Nicolas Boizard",
+  "givenName": "Nicolas",
+  "familyName": "Boizard",
+  "tagline": "NLP Researcher & PhD Student in Large Language Models",
+  "titleShort": "NLP Researcher & LLM PhD Student",
+  "heading": "Nicolas Boizard — NLP Researcher & PhD Student in Large Language Models",
+  "jobTitle": "PhD student in Natural Language Processing",
+  "metaDescription": "NLP PhD at CentraleSupélec. Large-scale multilingual, multimodal LLM training (BidirLM-Omni, EuroBERT, EuroLLM, CroissantLLM) and efficient distillation.",
+  "bioPlain": "Final-year PhD student at CentraleSupélec (Université Paris-Saclay), advised by Pierre Colombo and Céline Hudelot. Research on large-scale training of encoder and decoder models, including multilingual and multimodal ones (BidirLM-Omni, EuroBERT, EuroLLM, CroissantLLM), and on efficient techniques such as the Universal Logit Distillation Loss for cross-tokenizer distillation. CIFRE PhD with Diabolocom.",
+  "bioHtml": [
+    "Hi! I'm <b>Nicolas Boizard</b>, a final-year PhD student at CentraleSupélec (Université Paris-Saclay), advised by Pierre Colombo and Céline Hudelot. I work on applied NLP.",
+    "My research focuses on <b>large-scale training of encoder and decoder models</b>, including multilingual and multimodal ones such as <b>BidirLM-Omni, EuroBERT, EuroLLM, and CroissantLLM</b>. To make training at this scale tractable, I also develop <b>efficient techniques</b> like the <b>Universal Logit Distillation Loss</b>, which enables distillation across different model architectures.",
+    "My PhD is a CIFRE with Diabolocom, where I also advise their R&D on LLM projects. Currently exploring post-PhD opportunities. Happy to connect, collaborate, or chat about talks!"
+  ],
+  "portrait": {
+    "src": "img/nicolas_boizard.png",
+    "width": 200,
+    "height": 200,
+    "alt": "Nicolas Boizard, PhD student in Natural Language Processing"
+  },
+  "twitterHandle": "@N1colAIs",
+  "stats": [
+    { "value": "10+", "label": "publications" },
+    { "value": "1M+", "label": "downloads on Hugging Face" },
+    { "label": "Talks at", "value": "Meta, Cohere, NVIDIA, eBay", "valueAfter": true }
+  ],
+  "profiles": [
+    { "name": "Google Scholar", "url": "https://scholar.google.com/citations?user=B-jY8EkAAAAJ&hl=en", "icon": "scholar" },
+    { "name": "Hugging Face", "url": "https://huggingface.co/Nicolas-BZRD", "icon": "robot" },
+    { "name": "X (formerly Twitter)", "shortName": "X", "url": "https://x.com/N1colAIs", "icon": "x" },
+    { "name": "GitHub", "url": "https://github.com/Nicolas-BZRD", "icon": "github" },
+    { "name": "LinkedIn", "url": "https://linkedin.com/in/nicolas-boizard", "icon": "linkedin" }
+  ],
+  "affiliations": [
+    { "type": "CollegeOrUniversity", "name": "CentraleSupélec, Université Paris-Saclay", "url": "https://www.centralesupelec.fr/" },
+    { "type": "Organization", "name": "Diabolocom", "url": "https://www.diabolocom.com/" }
+  ],
+  "knowsAbout": [
+    "Natural Language Processing",
+    "Large Language Models",
+    "Knowledge Distillation",
+    "Multilingual NLP",
+    "Multimodal Representation Learning",
+    "Model Compression",
+    "Machine Learning"
+  ],
+  "filters": [
+    { "id": "all", "label": "All Projects" },
+    { "id": "main_author", "label": "Main Author" },
+    { "id": "large_scale_training", "label": "Large Scale Training" },
+    { "id": "efficient_training", "label": "Efficient Training" }
+  ],
+  "tagLabels": {
+    "main_author": "Main author",
+    "large_scale_training": "Large-scale training",
+    "efficient_training": "Efficient training"
+  },
+  "footerNote": "co-authored by LLM 🤖"
+}
