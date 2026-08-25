@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
             authors: 'N Boizard, H Gisserot-Boukhlef, K El Haddad, C Hudelot, P Colombo',
             type: 'paper main_author efficient_training',
             description: 'Distilling reasoning traces from strong teacher models has become the standard recipe for building capable small language models. Yet reasoning traces are 5-20× longer than standard instruction fine-tuning (IFT) outputs, meaning every practitioner who chooses reasoning distillation implicitly forgoes training a larger IFT model on the same compute budget. Whether this trade-off is worthwhile remains unaddressed. We study it with a controlled experiment: a single teacher generates paired IFT and reasoning outputs for identical prompts by toggling only its reasoning mode, isolating supervision format as the sole variable. Training students at five scales (0.5B to 14B) and evaluating on 18 benchmarks, we find that at matched FLOPs, IFT lies on or near the Pareto frontier across the majority of configurations. Reasoning reaches the Pareto frontier only on open-ended tasks at 7B and above. Even there, a sequential curriculum mixing just 25-50% reasoning data with IFT captures most of the accuracy benefit at far lower compute cost.',
-            conference: 'Preprint',
+            conference: 'EMNLP 2026',
             logoUrl: 'img/when_does_reasoning_matter.png',
             links: [
                 { type: 'arXiv', url: 'https://arxiv.org/abs/2509.22193', icon: 'fas fa-file-pdf' },
