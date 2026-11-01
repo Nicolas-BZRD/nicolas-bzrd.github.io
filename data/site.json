@@ -3,39 +3,39 @@
   "name": "Nicolas Boizard",
   "givenName": "Nicolas",
   "familyName": "Boizard",
-  "tagline": "NLP Researcher & PhD Student in Large Language Models",
-  "titleShort": "NLP Researcher & LLM PhD Student",
-  "heading": "Nicolas Boizard — NLP Researcher & PhD Student in Large Language Models",
-  "jobTitle": "PhD student in Natural Language Processing",
-  "metaDescription": "NLP PhD at CentraleSupélec. Large-scale multilingual, multimodal LLM training (BidirLM-Omni, EuroBERT, EuroLLM, CroissantLLM) and efficient distillation.",
-  "bioPlain": "Final-year PhD student at CentraleSupélec (Université Paris-Saclay), advised by Pierre Colombo and Céline Hudelot. Research on large-scale training of encoder and decoder models, including multilingual and multimodal ones (BidirLM-Omni, EuroBERT, EuroLLM, CroissantLLM), and on efficient techniques such as the Universal Logit Distillation Loss for cross-tokenizer distillation. CIFRE PhD with Diabolocom.",
+  "tagline": "Member of Technical Staff @ Cohere",
+  "titleShort": "Member of Technical Staff @ Cohere",
+  "jobTitle": "Member of Technical Staff",
+  "metaDescription": "Member of Technical Staff at Cohere (pretraining) and PhD candidate at CentraleSupélec. Multilingual & multimodal LLMs: BidirLM-Omni, EuroBERT, EuroLLM.",
+  "bioPlain": "Member of Technical Staff on the pretraining team at Cohere, scaling up model training, and PhD candidate at CentraleSupélec (Université Paris-Saclay), advised by Pierre Colombo and Céline Hudelot, defending in early 2027. PhD research on large-scale training of multilingual and multimodal LLMs, both decoders and encoders (EuroLLM, CroissantLLM, BidirLM-Omni, EuroBERT), and on distillation, such as the Universal Logit Distillation Loss for cross-tokenizer distillation.",
   "bioHtml": [
-    "Hi! I'm <b>Nicolas Boizard</b>, a final-year PhD student at CentraleSupélec (Université Paris-Saclay), advised by Pierre Colombo and Céline Hudelot. I work on applied NLP.",
-    "My research focuses on <b>large-scale training of encoder and decoder models</b>, including multilingual and multimodal ones such as <b>BidirLM-Omni, EuroBERT, EuroLLM, and CroissantLLM</b>. To make training at this scale tractable, I also develop <b>efficient techniques</b> like the <b>Universal Logit Distillation Loss</b>, which enables distillation across different model architectures.",
-    "My PhD is a CIFRE with Diabolocom, where I also advise their R&D on LLM projects. Currently exploring post-PhD opportunities. Happy to connect, collaborate, or chat about talks!"
+    "I'm a <b>Member of Technical Staff at Cohere</b> on the pretraining team where, to put it simply, my goal is to make the model size go up and the loss curve go down. I'm also finishing my PhD at CentraleSupélec with Pierre Colombo and Céline Hudelot, with my defense planned for <b>early 2027</b>.",
+    "My research covers <b>large-scale training of multilingual and multimodal LLMs</b>, both decoders and encoders (EuroLLM, CroissantLLM, BidirLM-Omni, EuroBERT), and <b>distillation</b>, such as the Universal Logit Distillation Loss for cross-tokenizer distillation."
   ],
-  "portrait": {
-    "src": "img/nicolas_boizard.png",
-    "width": 200,
-    "height": 200,
-    "alt": "Nicolas Boizard, PhD student in Natural Language Processing"
-  },
+  "portrait": {"src": "img/nicolas_boizard.jpg", "width": 600, "height": 600, "alt": "Nicolas Boizard in front of the Golden Gate Bridge"},
+  "sidebarPhoto": {"src": "img/portrait.webp", "width": 480, "height": 660, "caption": "Me (Nicolas Boizard) · 2026"},
+  "avatar": "img/avatar.webp",
   "twitterHandle": "@N1colAIs",
   "stats": [
-    { "value": "10+", "label": "publications" },
-    { "value": "1M+", "label": "downloads on Hugging Face" },
-    { "label": "Talks at", "value": "Meta, Cohere, NVIDIA, eBay", "valueAfter": true }
+    {"value": "10+", "label": "publications"},
+    {"value": "1.5M+", "label": "downloads on Hugging Face"},
+    {"value": "12+", "label": "invited talks & press articles"}
+  ],
+  "highlights": [
+    {"area": "Decoders", "items": [["EuroLLM-22B", "eurollm-22b"], ["EuroLLM-9B", "eurollm-9b"], ["CroissantLLM", "croissantllm"]], "note": "Open multilingual decoders for European languages, and a truly bilingual French–English model."},
+    {"area": "Encoders", "items": [["BidirLM-Omni", "bidirlm"], ["EuroBERT", "eurobert"]], "note": "Multilingual and omnimodal bidirectional encoders. BidirLM-Omni ranks first among open models on MTEB, MIEB and MAEB at its size."},
+    {"area": "Distillation", "items": [["ULD Loss", "towards-cross-tokenizer-distillation"], ["Scale or Reason?", "scale-or-reason"]], "note": "Cross-tokenizer logit distillation, adopted by Hugging Face and Axolotl, and a compute-equivalent study of reasoning distillation."}
   ],
   "profiles": [
-    { "name": "Google Scholar", "url": "https://scholar.google.com/citations?user=B-jY8EkAAAAJ&hl=en", "icon": "scholar" },
-    { "name": "Hugging Face", "url": "https://huggingface.co/Nicolas-BZRD", "icon": "robot" },
-    { "name": "X (formerly Twitter)", "shortName": "X", "url": "https://x.com/N1colAIs", "icon": "x" },
-    { "name": "GitHub", "url": "https://github.com/Nicolas-BZRD", "icon": "github" },
-    { "name": "LinkedIn", "url": "https://linkedin.com/in/nicolas-boizard", "icon": "linkedin" }
+    {"name": "Google Scholar", "url": "https://scholar.google.com/citations?user=B-jY8EkAAAAJ&hl=en", "icon": "scholar"},
+    {"name": "Hugging Face", "url": "https://huggingface.co/Nicolas-BZRD", "icon": "robot"},
+    {"name": "X (formerly Twitter)", "shortName": "X", "url": "https://x.com/N1colAIs", "icon": "x"},
+    {"name": "GitHub", "url": "https://github.com/Nicolas-BZRD", "icon": "github"},
+    {"name": "LinkedIn", "url": "https://linkedin.com/in/nicolas-boizard", "icon": "linkedin"}
   ],
   "affiliations": [
-    { "type": "CollegeOrUniversity", "name": "CentraleSupélec, Université Paris-Saclay", "url": "https://www.centralesupelec.fr/" },
-    { "type": "Organization", "name": "Diabolocom", "url": "https://www.diabolocom.com/" }
+    {"type": "Organization", "name": "Cohere", "url": "https://cohere.com/"},
+    {"type": "CollegeOrUniversity", "name": "CentraleSupélec, Université Paris-Saclay", "url": "https://www.centralesupelec.fr/"}
   ],
   "knowsAbout": [
     "Natural Language Processing",
@@ -47,15 +47,11 @@
     "Machine Learning"
   ],
   "filters": [
-    { "id": "all", "label": "All Projects" },
-    { "id": "main_author", "label": "Main Author" },
-    { "id": "large_scale_training", "label": "Large Scale Training" },
-    { "id": "efficient_training", "label": "Efficient Training" }
+    {"id": "all", "label": "All"},
+    {"id": "main_author", "label": "Main author"},
+    {"id": "large_scale_training", "label": "Large-scale training"},
+    {"id": "efficient_training", "label": "Efficient training"}
   ],
-  "tagLabels": {
-    "main_author": "Main author",
-    "large_scale_training": "Large-scale training",
-    "efficient_training": "Efficient training"
-  },
+  "tagLabels": {"main_author": "Main author", "large_scale_training": "Large-scale training", "efficient_training": "Efficient training"},
   "footerNote": "co-authored by LLM 🤖"
 }

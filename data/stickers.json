@@ -1,0 +1,202 @@
+{
+  "palette": {"k": "#1b1b1f", "w": "#ffffff", "s": "#d4d6db", "S": "#8d929b", "o": "#ff7a1a", "O": "#c4500f", "l": "#ffc56b", "y": "#ffd23f", "b": "#3563e9", "B": "#1d3a8f", "g": "#3fcf8e", "G": "#1f8a5b", "r": "#ef4444", "p": "#f9a8d4", "D": "#2b2d33", "C": "#39594d", "R": "#ff7759", "P": "#d18ee2"},
+  "tokens": ["a", "é", "ß", "Ж", "文", "ع", "λ", "∑", "🖼", "♪", "{ }", "</s>"],
+  "machine": [
+    "..kkkkkkkkkkkkkk........",
+    "..kssssssssssssk..kkk...",
+    "...kssssssssssk...kSk...",
+    "....kssssssssk....kSk...",
+    ".....kSSSSSSk.....kSk...",
+    ".kkkkkkkkkkkkkkkkkkkk...",
+    ".kssssssssssssssssssk...",
+    ".ksDDDDDDDDssssssyssk...",
+    ".ksDgDDDDDDsssssssssk...",
+    ".ksDDgDDDDDsssssssssk...",
+    ".ksDDDggDDDsssssssssk...",
+    ".ksDDDDDgggsssssssssk...",
+    ".ksDDDDDDDDsssssssssk...",
+    ".kssssssssssssssssssk...",
+    ".ksswwwwwwwwsssssssSkkkk",
+    ".ksswkwkkwkwsssssssSDDDk",
+    ".ksswwwwwwwwsssssssSDDDk",
+    ".ksssssssssssssssssSkkkk",
+    ".kSSSSSSSSSSSSSSSSSSk...",
+    ".kkkkkkkkkkkkkkkkkkkk...",
+    "..kSk..........kSk......",
+    "..kkk..........kkk......"
+  ],
+  "stickers": [
+    {
+      "label": "Cohere · 2026", "target": "about",
+      "pixels": [
+        "...kkkkk...",
+        "..kkCCCkk..",
+        ".kCCCCCCCk.",
+        "kkCCCCCCCkk",
+        "kCCCCCCCCCk",
+        "kwwwwwwwwwk",
+        "kRRRRwPPPPk",
+        "kkRRRwPPPkk",
+        ".kRRRwPPPk.",
+        "..kkRwPkk..",
+        "...kkkkk..."
+      ]
+    },
+    {
+      "label": "EuroBERT", "target": "eurobert",
+      "pixels": [
+        ".k.k.k.k.",
+        ".kkkkkkk.",
+        "kyyyyyyyk",
+        "kykkkkkyk",
+        "kwkyyykwk",
+        "kyyyoyyyk",
+        "kyyyoyyyk",
+        ".kykkkyk.",
+        "..kyyyk..",
+        "...kkk...",
+        ".kkbbbkk.",
+        "kbbbybbbk",
+        "kbybbbybk",
+        "kbbbybbbk",
+        "kkkkkkkkk"
+      ]
+    },
+    {
+      "label": "CroissantLLM", "target": "croissantllm",
+      "pixels": [
+        "......kkkkkk......",
+        "....kkllOOllkk....",
+        "..kklOllOOllOlkk..",
+        ".koooOooOOooOoook.",
+        "kooooOokkkkoOooook",
+        "kooookk....kkooook",
+        "koook........koook",
+        "kook..........kook",
+        ".kk............kk."
+      ]
+    },
+    {
+      "label": "EuroLLM", "target": "eurollm-22b",
+      "pixels": [
+        "kkkkkkkkkkkkkkkk",
+        "kbbbbbbbbbbbbbbk",
+        "kbbbbbbybbbbbbbk",
+        "kbbbbybbbybbbbbk",
+        "kbbbbbbbbbbbbbbk",
+        "kbbbybbbbbbybbbk",
+        "kbbbbbbbbbbbbbbk",
+        "kbbbybbbbbbybbbk",
+        "kbbbbbbbbbbbbbbk",
+        "kbbbbybbbybbbbbk",
+        "kbbbbbbybbbbbbbk",
+        "kkkkkkkkkkkkkkkk"
+      ]
+    },
+    {
+      "label": "ULD Loss", "target": "towards-cross-tokenizer-distillation",
+      "pixels": [
+        "...kkkkkk...",
+        "....kwwk....",
+        "....kwwk....",
+        "....kwwk....",
+        "...kwwwwk...",
+        "..kwwwwwwk..",
+        ".kwwwwwwwwk.",
+        ".kggggggggk.",
+        "kggwggggggGk",
+        "kgggggwgggGk",
+        "kggggggggGGk",
+        ".kkkkkkkkkk."
+      ]
+    },
+    {
+      "label": "Scale or Reason?", "target": "scale-or-reason",
+      "pixels": [
+        ".........kkk......",
+        ".......kkkwkkk....",
+        "....kkkkwbbbwkkk..",
+        "...kkwwwbwwwbwwkk.",
+        "..kkwwwwwwwwbwwwkk",
+        "..kwwwwwwwbbwwwwwk",
+        "..kwwwwwwwbwwwwwwk",
+        "..kkwwwwwwwwwwwwwk",
+        "...kkwwwwwbwwwwwkk",
+        "....kkkkwwwwkkkkk.",
+        ".......kkkkkk.....",
+        "....kkkk..........",
+        "....kwwk..........",
+        "....kwwk..........",
+        ".kkkkkkk..........",
+        ".kwk..............",
+        ".kkk.............."
+      ]
+    },
+    {
+      "label": "BidirLM-Omni", "target": "bidirlm",
+      "pixels": [
+        "....kkkkkkkk....",
+        "..kkwwwwwwwwkk..",
+        ".kwwwwkkkkwwwwk.",
+        "kwwwwkbbbbkwwwwk",
+        "kwwwkbbkkbbkwwwk",
+        "kwwwkbbkkbbkwwwk",
+        "kwwwwkbbbbkwwwwk",
+        ".kwwwwkkkkwwwwk.",
+        "..kkwwwwwwwwkk..",
+        "....kkkkkkkk...."
+      ]
+    },
+    {
+      "label": "BERT-as-a-Judge", "target": "bert-as-a-judge",
+      "pixels": [
+        "kkkkkkkkkk..",
+        "kwwwwwwwwkk.",
+        "kwsssssswwkk",
+        "kwwwwwwwwwwk",
+        "kwssssswwwwk",
+        "kwwwwwwwwwgk",
+        "kwssswwwwggk",
+        "kwwwwgwwggwk",
+        "kwwwwggggwwk",
+        "kwwwwwggwwwk",
+        "kwwwwwwwwwwk",
+        "kkkkkkkkkkkk"
+      ]
+    },
+    {
+      "label": "MLM vs CLM", "target": "should-we-still-pretrain-encoders",
+      "pixels": [
+        "kkkk......kkkk",
+        "kwskk....kkswk",
+        "kkwskk..kkswkk",
+        ".kkwskkkkswkk.",
+        "..kkwskkswkk..",
+        "...kkwsswkk...",
+        ".kkkkkwskkkkk.",
+        ".kykkswwskkyk.",
+        ".kkyswkkwsykk.",
+        "..kkykkkkykk..",
+        ".kkOkykkykOkk.",
+        "kkykkkyykkkykk",
+        "kykk.kkkk.kkyk",
+        "kkk........kkk"
+      ]
+    },
+    {
+      "label": "PhD · 2027",
+      "pixels": [
+        ".......kk.......",
+        ".....kkBBkk.....",
+        "...kkBBBBBBkk...",
+        ".kkBBBBBBBBBBkk.",
+        "kBBBBBBBkBBBBBBk",
+        ".kkBBBBBBkBBBkk.",
+        "...kkkkkkkkkkyk.",
+        "...kBBBBBBBBkyk.",
+        "...kBBBBBBBBkyy.",
+        "....kkkkkkkk.yy."
+      ]
+    }
+  ]
+}

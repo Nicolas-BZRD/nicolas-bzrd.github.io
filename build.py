@@ -2,9 +2,10 @@
 """Builds the whole site from the JSON files in data/.
 
 Edit only these:
-    data/site.json      identity, bio, profile links, filters
+    data/site.json      identity, bio, highlights, profile links, filters
     data/timeline.json  publications and news, in display order
     data/icons.json     inline SVG icon set (touch only to add an icon)
+    data/stickers.json  pixel art for the hero assembly line (machine, logos, tokens)
 
 Everything else is generated and must never be hand-edited:
     index.html          pre-rendered page + JSON-LD (readable with JS disabled)
@@ -13,11 +14,13 @@ Everything else is generated and must never be hand-edited:
     publications.md     plain-text mirror for dataset scrapers
     sitemap.xml         crawlable URLs
 
-Run ./build.sh, which also rebuilds tailwind.css.
+Styling lives in style.css, behaviour (filters, abstracts, nav) in site.js.
+Run ./build.sh.
 """
 
 import html
 import json
+import re
 from datetime import date
 from pathlib import Path
 
@@ -27,10 +30,12 @@ DATA = ROOT / "data"
 site = json.loads((DATA / "site.json").read_text())
 items = json.loads((DATA / "timeline.json").read_text())
 icons = json.loads((DATA / "icons.json").read_text())
+factory = json.loads((DATA / "stickers.json").read_text())
 
 SITE = site["url"].rstrip("/")
 TAG_LABELS = site["tagLabels"]
-ICON_CLS = "w-4 h-4 shrink-0"
+ME = f'{site["givenName"][0]} {site["familyName"]}'  # how the site owner appears in author lists
+NAV = [("about", "About"), ("publications", "Publications"), ("press", "Press")]
 
 
 def e(text):
@@ -50,7 +55,7 @@ def abs_url(path):
     return f"{SITE}/{str(path).lstrip('/')}"
 
 
-def icon(name, classes="", label=None):
+def icon(name, classes="icon", label=None):
     """Inline <svg> from data/icons.json. Decorative unless `label` is given."""
     if name not in icons:
         raise SystemExit(f"unknown icon {name!r}; add it to data/icons.json")
@@ -81,8 +86,20 @@ def first_url(item):
     return links[0]["url"] if links else ""
 
 
+def slug(item):
+    """Stable anchor from the title: 'EuroBERT: Scaling ...' -> 'eurobert'."""
+    head = re.split(r"[:?]", item["title"])[0]
+    words = re.sub(r"[^a-z0-9]+", " ", head.lower()).split()[:5]
+    return "-".join(words)
+
+
 papers = [i for i in items if not is_news(i)]
 news = [i for i in items if is_news(i)]
+press = [n for n in news if n.get("icon") == "newspaper"]  # the only news shown on the page
+paper_ids = {slug(p) for p in papers}
+
+EXTERNAL = 'target="_blank" rel="noopener noreferrer"'
+ARROW = '<span class="arrow" aria-hidden="true">↗</span>'
 
 # --- <head> -------------------------------------------------------------------
 
@@ -118,155 +135,296 @@ def render_head():
     <title>{e(title)}</title>
     <meta name="description" content="{e(desc)}">
     <meta name="author" content="{e(site['name'])}">
-    <meta name="theme-color" content="#f9fafb">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)">
     <link rel="canonical" href="{SITE}/">
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="alternate" type="application/json" href="/data/timeline.json" title="Publications and timeline (JSON)">
     <link rel="alternate" type="text/markdown" href="/publications.md" title="Publications and timeline (Markdown)">
 {social}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="tailwind.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-    <link rel="stylesheet" href="style.css">"""
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <script>document.documentElement.classList.add('js')</script>"""
 
 
-# --- about section ------------------------------------------------------------
+# --- sidebar / top bar ----------------------------------------------------------
+
+
+def render_sidebar(home=""):
+    links = "\n".join(
+        f'                <a href="{home}#{sid}" data-nav="{sid}">'
+        f'<span class="nav-num">{n:02d}</span>{label}</a>'
+        for n, (sid, label) in enumerate(NAV, 1)
+    )
+    ph = site["sidebarPhoto"]
+    return f"""    <aside class="sidebar">
+        <div class="sidebar-inner">
+            <figure class="sidebar-photo">
+                <img src="{e(ph['src'])}" width="{e(ph['width'])}" height="{e(ph['height'])}" alt="{e(site['portrait']['alt'])}">
+                <figcaption>{e(ph['caption'])}</figcaption>
+            </figure>
+            <a class="brand" href="/">
+                <img class="brand-avatar" src="{e(site['avatar'])}" width="32" height="32" alt="">
+                <span class="brand-text">
+                    <span class="brand-name">{e(site['name'])}</span>
+                    <span class="brand-role">{e(site['titleShort'])}</span>
+                </span>
+            </a>
+            <nav class="nav" aria-label="Primary">
+{links}
+            </nav>
+        </div>
+    </aside>"""
+
+
+# --- about ----------------------------------------------------------------------
+
+
+def render_highlights():
+    rows = []
+    for h in site.get("highlights", []):
+        links = []
+        for label, target in h["items"]:
+            if target not in paper_ids:
+                raise SystemExit(f"highlight {label!r} points to unknown paper #{target}")
+            links.append(f'<a href="#{e(target)}">{e(label)}</a>')
+        rows.append(
+            f"""                <div class="work-row">
+                    <dt>{e(h['area'])}</dt>
+                    <dd><span class="work-items">{', '.join(links)}</span> <span class="work-note">{e(h['note'])}</span></dd>
+                </div>"""
+        )
+    if not rows:
+        return ""
+    return f"""
+            <div class="work">
+                <p class="eyebrow">What I build</p>
+                <dl class="work-list">
+{chr(10).join(rows)}
+                </dl>
+            </div>"""
+
+
+def pixel_svg(rows, palette):
+    """Pixel-art grid -> <svg>, merging horizontal runs of one colour into a single rect."""
+    rects = []
+    for y, row in enumerate(rows):
+        x = 0
+        while x < len(row):
+            c = row[x]
+            run = 1
+            while x + run < len(row) and row[x + run] == c:
+                run += 1
+            if c != ".":
+                rects.append(f'<rect x="{x}" y="{y}" width="{run}" height="1" fill="{palette[c]}"/>')
+            x += run
+    w, h = len(rows[0]), len(rows)
+    return (
+        f'<svg viewBox="0 0 {w} {h}" width="{w}" height="{h}" shape-rendering="crispEdges" '
+        f'aria-hidden="true" focusable="false">{"".join(rects)}</svg>'
+    )
+
+
+def render_factory():
+    """Assembly-line strip: a pixel machine eats tokens and outputs project logos onto a belt.
+
+    The logos are rendered here as a static row (what crawlers and no-JS/reduced-motion
+    visitors see); site.js uses them as templates for the animation.
+    """
+    items = []
+    for st in factory["stickers"]:
+        rows = st["pixels"]
+        if any(len(r) != len(rows[0]) for r in rows):
+            raise SystemExit(f"sticker {st['label']!r} has rows of different lengths")
+        target = st.get("target")
+        if target and target not in paper_ids | {"about"}:
+            raise SystemExit(f"sticker {st['label']!r} points to unknown anchor #{target}")
+        style = f"--w:{len(rows[0])};--h:{len(rows)}"
+        svg = pixel_svg(rows, factory["palette"])
+        label = e(st["label"])
+        if target:
+            items.append(
+                f'                    <a class="sticker" href="#{e(target)}" style="{style}" '
+                f'data-label="{label}" aria-label="{label}">{svg}</a>'
+            )
+        else:
+            items.append(
+                f'                    <span class="sticker" style="{style}" data-label="{label}" '
+                f'role="img" aria-label="{label}">{svg}</span>'
+            )
+    machine = factory["machine"]
+    tokens = e(json.dumps(factory["tokens"], ensure_ascii=False))
+    return f"""            <div class="factory" data-tokens="{tokens}">
+                <p class="factory-label"><span>NB-1</span> pretraining line</p>
+                <p class="factory-meter" aria-hidden="true">
+                    <span>params <b data-params>1.0B</b> ↑</span>
+                    <span>loss <b data-loss>3.20</b> ↓</span>
+                    <svg class="factory-spark" viewBox="0 0 60 20" preserveAspectRatio="none"><polyline points="" /></svg>
+                </p>
+                <div class="factory-machine" style="--w:{len(machine[0])};--h:{len(machine)}" aria-hidden="true">
+                    {pixel_svg(machine, factory["palette"])}
+                    <span class="factory-lamp"></span>
+                </div>
+                <div class="factory-belt" aria-hidden="true"></div>
+                <div class="factory-items" role="group" aria-label="Project logos">
+{chr(10).join(items)}
+                </div>
+            </div>"""
 
 
 def render_about():
-    bio = "<br><br>\n                    ".join(site["bioHtml"])
-    stats = []
-    for i, s in enumerate(site["stats"]):
-        if i:
-            stats.append('<span class="text-gray-300" aria-hidden="true">·</span>')
-        if s.get("valueAfter"):
-            stats.append(
-                f'<span>{e(s["label"])} <b class="text-gray-900">{e(s["value"])}</b></span>'
-            )
-        else:
-            stats.append(
-                f'<span><b class="text-gray-900 text-lg">{e(s["value"])}</b> {e(s["label"])}</span>'
-            )
-    links = "\n                    ".join(
-        f'<a href="{e(p["url"])}" class="text-gray-600 hover:text-blue-600 transition-colors '
-        f'inline-flex items-center gap-1.5" target="_blank" rel="noopener noreferrer" '
+    bio = "\n".join(f"                <p>{p}</p>" for p in site["bioHtml"])
+    stats = "\n".join(
+        f'                <div class="stat">'
+        f'<dt>{e(s["label"])}</dt><dd>{e(s["value"])}</dd></div>'
+        for s in site["stats"]
+    )
+    links = "\n".join(
+        f'                <a class="btn" href="{e(p["url"])}" {EXTERNAL} '
         f'title="{e(site["name"])} on {e(p["name"])}">'
-        f'{icon(p["icon"], ICON_CLS)}{e(p["name"])}</a>'
+        f'{icon(p["icon"])}{e(p.get("shortName", p["name"]))}</a>'
         for p in site["profiles"]
     )
-    pt = site["portrait"]
-    return f"""        <section id="about" class="flex flex-col md:flex-row items-center mb-20">
-            <div class="md:w-1/5 text-center md:text-left mb-8 md:mb-0">
-                <img class="w-60 h-60 rounded-full mx-auto md:mx-0 shadow-lg" src="{e(pt['src'])}"
-                     width="{e(pt['width'])}" height="{e(pt['height'])}" alt="{e(pt['alt'])}">
+    tagline = '<span class="sr-only"> | </span>'.join(
+        f'<span class="hero-tagline">{e(part)}</span>' for part in site["tagline"].split(" | ")
+    )
+    return f"""        <section id="about" class="section hero" aria-labelledby="about-title">
+            <h1 id="about-title">{e(site['name'])}<span class="sr-only"> — </span>{tagline}</h1>
+{render_factory()}
+            <div class="bio">
+{bio}
             </div>
-            <div class="md:w-4/5 md:pl-12">
-                <h1 class="text-4xl font-bold text-gray-900 mb-4">{e(site['heading'])}</h1>
-                <p class="text-lg text-gray-700 mb-6">
-                    {bio}
-                </p>
-                <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-gray-600 mb-6">
-                    {"".join(stats)}
-                </div>
-                <div class="flex flex-wrap justify-center md:justify-start gap-3">
-                    {links}
-                </div>
+            <div class="profiles">
+{links}
             </div>
+            <dl class="stats">
+{stats}
+            </dl>{render_highlights()}
         </section>"""
 
 
-# --- timeline ----------------------------------------------------------------
+# --- press ----------------------------------------------------------------------
 
 
-def render_news_item(item):
-    link = ""
-    if item.get("link"):
-        link = (
-            f'<a href="{e(item["link"])}" target="_blank" rel="noopener noreferrer" '
-            f'class="ml-2 text-gray-500 hover:text-blue-600" '
-            f'title="Source: {e(item["title"])}">'
-            f'{icon("external", "w-3 h-3 inline", label="Open source link")}</a>'
-        )
-    return f"""            <div class="timeline-entry mb-8 relative" data-tags="news">
-                <div class="timeline-dot absolute left-0 top-2 w-2.5 h-2.5 bg-gray-300 rounded-full border-2 border-white"></div>
-                <div class="ml-10">
-                    <p class="text-xs text-gray-400 mb-1 font-medium"><time datetime="{e(item['date'])}">{e(item['date'])}</time></p>
-                    <div class="inline-flex items-center text-gray-500 text-sm italic">
-                        {icon(item.get('icon', 'star'), 'w-3.5 h-3.5 text-gray-400 mr-2')}
-                        <span>{e(item['title'])}</span>{link}
-                    </div>
-                </div>
-            </div>
-"""
+def render_press_item(item):
+    outlet, _, headline = item["title"].partition(" — ")
+    if not headline:
+        outlet, headline = "", outlet
+    tag, attrs = ("a", f' href="{e(item["link"])}" {EXTERNAL}') if item.get("link") else ("div", "")
+    return f"""                <li>
+                    <{tag} class="press-card"{attrs}>
+                        <span class="press-top"><span class="press-outlet">{e(outlet)}</span><time datetime="{e(item['date'])}">{e(item['date'])}</time></span>
+                        <span class="press-headline">{e(headline)}</span>
+                        {ARROW if item.get("link") else ""}
+                    </{tag}>
+                </li>"""
+
+
+def render_press():
+    if not press:
+        return ""
+    return f"""        <section id="press" class="section" aria-labelledby="press-title">
+            <header class="section-head">
+                <h2 id="press-title">Press</h2>
+            </header>
+            <ul class="press-list">
+{chr(10).join(render_press_item(p) for p in press)}
+            </ul>
+        </section>"""
+
+
+# --- publications -------------------------------------------------------------------
+
+
+def highlight_me(authors):
+    return e(authors).replace(e(ME), f"<b>{e(ME)}</b>")
 
 
 def render_paper(item):
-    links = "\n                            ".join(
-        f'<a href="{e(l["url"])}" target="_blank" rel="noopener noreferrer" '
-        f'class="inline-flex items-center gap-2 bg-gray-100 hover:bg-blue-100 text-gray-800 '
-        f'hover:text-blue-700 text-sm font-medium py-2 px-4 rounded-lg transition-colors">'
-        f'{icon(l["icon"], ICON_CLS)}{e(l["type"])}</a>'
+    pid = slug(item)
+    links = "\n".join(
+        f'                            <a class="chip" href="{e(l["url"])}" {EXTERNAL}>'
+        f'{icon(l["icon"])}{e(l["type"])}</a>'
         for l in item.get("links", [])
     )
-    conference = (
-        f'\n                                <p class="text-blue-600 font-semibold mb-2">{e(item["conference"])}</p>'
-        if item.get("conference")
-        else ""
-    )
+    abstract = ""
+    toggle = ""
+    if item.get("description"):
+        toggle = (
+            f'\n                            <button class="chip chip-ghost abstract-toggle" type="button" '
+            f'aria-expanded="false" aria-controls="{pid}-abstract">Abstract'
+            f'<span class="chev" aria-hidden="true"></span></button>'
+        )
+        abstract = f'\n                        <p class="pub-abstract" id="{pid}-abstract">{e(item["description"])}</p>'
+    meta = []
+    if item.get("conference"):
+        meta.append(f'<span class="pub-venue">{e(item["conference"])}</span>')
+    if "main_author" in tags(item):
+        meta.append(f'<span class="pub-badge">{e(TAG_LABELS["main_author"])}</span>')
     authors = (
-        f'\n                                <p class="text-sm text-gray-600 mb-4">{e(item["authors"])}</p>'
+        f'\n                        <p class="pub-authors">{highlight_me(item["authors"])}</p>'
         if item.get("authors")
         else ""
     )
-    logo = ""
+    title = e(item["title"])
+    if first_url(item):
+        title = f'<a href="{e(first_url(item))}" {EXTERNAL}>{title}</a>'
+    thumb = ""
     if item.get("logoUrl"):
-        alt = e(item.get("conference") or item["title"])
-        logo = f"""
-                            <div class="w-24 h-24 mb-4 md:mb-0 md:mr-6 flex-shrink-0">
-                                <img src="{e(item['logoUrl'])}" alt="{alt} illustration" width="96" height="96"
-                                     loading="lazy" decoding="async" class="w-full h-full object-cover rounded-lg shadow-md">
-                            </div>"""
-    return f"""            <article class="timeline-entry mb-12 relative" data-tags="{e(item.get('type', ''))}">
-                <div class="timeline-dot absolute left-0 top-1.5 w-4 h-4 bg-blue-500 rounded-full border-4 border-white"></div>
-                <div class="ml-10">
-                    <p class="text-sm text-gray-500 mb-2 font-medium"><time datetime="{e(item['date'])}">{e(item['date'])}</time></p>
-                    <div class="timeline-card bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-                        <div class="flex flex-col md:flex-row items-start mb-4">{logo}
-                            <div class="flex-grow">
-                                <h3 class="text-xl font-bold text-gray-900 mb-2">{e(item['title'])}</h3>{authors}{conference}
-                            </div>
-                        </div>
-                        <p class="text-gray-700 mb-6">{e(item.get('description', ''))}</p>
-                        <div class="flex flex-wrap gap-3 mt-4">
-                            {links}
-                        </div>
+        thumb = (
+            f'\n                    <img class="pub-thumb" src="{e(item["logoUrl"])}" alt="" '
+            f'width="96" height="96" loading="lazy" decoding="async">'
+        )
+    return f"""                <article class="pub" id="{pid}" data-tags="{e(item.get('type', ''))}">{thumb}
+                    <div class="pub-body">
+                        <p class="pub-meta">{"".join(meta)}</p>
+                        <h3 class="pub-title">{title}</h3>{authors}
+                        <div class="pub-links">
+{links}{toggle}
+                        </div>{abstract}
                     </div>
-                </div>
-            </article>
-"""
+                </article>"""
 
 
-def render_timeline():
-    buttons = "\n                    ".join(
-        f'<button class="filter-btn {"bg-blue-600 text-white" if f["id"] == "all" else "bg-gray-200 text-gray-700"} '
-        f'hover:bg-blue-100 hover:text-blue-700 transition-colors px-4 py-2 rounded-full text-sm '
-        f'font-semibold cursor-pointer" data-filter="{e(f["id"])}" '
-        f'aria-pressed="{"true" if f["id"] == "all" else "false"}">{e(f["label"])}</button>'
+def render_publications():
+    def count(fid):
+        return len(papers) if fid == "all" else sum(fid in tags(p) for p in papers)
+
+    buttons = "\n".join(
+        f'                <button class="filter" type="button" data-filter="{e(f["id"])}" '
+        f'aria-pressed="{"true" if f["id"] == "all" else "false"}">'
+        f'{e(f["label"])}<span class="filter-count">{count(f["id"])}</span></button>'
         for f in site["filters"]
     )
-    entries = "".join(
-        render_news_item(i) if is_news(i) else render_paper(i) for i in items
-    )
-    return f"""        <section id="timeline">
-            <h2 class="text-3xl font-bold mb-10 text-center text-gray-900">My Research Journey &amp; Publications</h2>
-            <div class="top-0 bg-gray-50 z-10 py-4">
-                <div class="flex flex-wrap justify-center gap-2" role="group" aria-label="Filter publications">
-                    {buttons}
+    years = []
+    for year in dict.fromkeys(p["date"] for p in papers):
+        entries = "\n".join(render_paper(p) for p in papers if p["date"] == year)
+        years.append(
+            f"""            <div class="pub-year">
+                <p class="pub-year-label">{e(year)}</p>
+                <div class="pub-list">
+{entries}
                 </div>
+            </div>"""
+        )
+    scholar = next((p for p in site["profiles"] if p["icon"] == "scholar"), None)
+    scholar_link = (
+        f'\n                <a class="section-link" href="{e(scholar["url"])}" {EXTERNAL}>Google Scholar{ARROW}</a>'
+        if scholar
+        else ""
+    )
+    return f"""        <section id="publications" class="section" aria-labelledby="publications-title">
+            <header class="section-head">
+                <h2 id="publications-title">Publications</h2>{scholar_link}
+            </header>
+            <div class="filters" role="group" aria-label="Filter publications">
+{buttons}
             </div>
-            <div id="timeline-container" class="relative border-l-2 border-gray-200 pl-6">
-{entries}            </div>
-            <p id="timeline-empty" class="hidden text-gray-500 text-center">No items to display for this category.</p>
+{chr(10).join(years)}
+            <p class="pub-empty" hidden>No publications in this category.</p>
         </section>"""
 
 
@@ -336,25 +494,13 @@ def render_jsonld():
 
 GENERATED = "<!-- Generated by build.py from data/*.json — do not edit by hand. -->"
 
-header = f"""    <header class="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/" class="text-2xl font-bold text-gray-900">{e(site['name'])}</a>
-            <nav class="hidden md:flex space-x-6" aria-label="Primary">
-                <a href="/#about" class="text-gray-600 hover:text-blue-600 transition-colors">About {e(site['givenName'])}</a>
-                <a href="/#timeline" class="text-gray-600 hover:text-blue-600 transition-colors">Research Timeline</a>
-            </nav>
-        </div>
-    </header>"""
-
-footer = f"""    <footer class="bg-white mt-16 py-6 border-t">
-        <div class="container mx-auto px-6 text-gray-600">
-            <p>&copy; {date.today().year} {e(site['name'])}, {e(site['footerNote'])}. All rights reserved.
-               <span class="sr-only">Personal portfolio and research website.</span></p>
-        </div>
-    </footer>"""
+footer = f"""        <footer class="footer">
+            <p>&copy; {date.today().year} {e(site['name'])} · {e(site['footerNote'])}</p>
+            <p class="footer-links"><a href="/llms.txt">llms.txt</a><a href="/publications.md">publications.md</a></p>
+        </footer>"""
 
 
-def page(body, *, head_extra="", noindex=False):
+def page(body, *, home="", head_extra="", noindex=False, scripts=""):
     robots = '\n    <meta name="robots" content="noindex">' if noindex else ""
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -362,12 +508,16 @@ def page(body, *, head_extra="", noindex=False):
 <head>
     {render_head()}{robots}{head_extra}
 </head>
-<body class="bg-gray-50 text-gray-800">
-{header}
-
+<body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="shell">
+{render_sidebar(home)}
+    <main id="main" class="main">
 {body}
 
 {footer}
+    </main>
+    </div>{scripts}
 </body>
 </html>
 """
@@ -375,27 +525,26 @@ def page(body, *, head_extra="", noindex=False):
 
 (ROOT / "index.html").write_text(
     page(
-        f"""    <main class="container mx-auto px-6 py-12">
+        f"""{render_about()}
 
-{render_about()}
+{render_publications()}
 
-{render_timeline()}
-
-    </main>
-
-    <script src="timeline.js" defer></script>""",
+{render_press()}""",
         head_extra="\n" + render_jsonld(),
+        scripts='\n    <script src="site.js" defer></script>',
     )
 )
 
 (ROOT / "404.html").write_text(
     page(
-        """    <main class="container mx-auto px-6 py-24 text-center">
-        <h1 class="text-4xl font-bold text-gray-900 mb-4">Page not found</h1>
-        <p class="text-lg text-gray-700">That page does not exist. Try the
-           <a href="/" class="text-blue-600 hover:underline">home page</a> or the
-           <a href="/#timeline" class="text-blue-600 hover:underline">research timeline</a>.</p>
-    </main>""",
+        """        <section class="section hero">
+            <p class="eyebrow">Error 404</p>
+            <h1>Page not found<span class="hero-tagline">That page does not exist.</span></h1>
+            <div class="bio">
+                <p>Try the <a href="/">home page</a> or the <a href="/#publications">publication list</a>.</p>
+            </div>
+        </section>""",
+        home="/",
         noindex=True,
     )
 )
@@ -405,7 +554,7 @@ def page(body, *, head_extra="", noindex=False):
 lines = [
     f'# {site["name"]}',
     "",
-    f'> {site["tagline"]}. {site["bioPlain"]}',
+    f'> {site["bioPlain"]}',
     "",
     "Machine-readable copies of everything on this site: "
     f"[timeline.json]({abs_url('data/timeline.json')}) (all entries, structured), "

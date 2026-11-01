@@ -1,6 +1,6 @@
 # Nicolas Boizard
 
-> NLP Researcher & PhD Student in Large Language Models. Final-year PhD student at CentraleSupélec (Université Paris-Saclay), advised by Pierre Colombo and Céline Hudelot. Research on large-scale training of encoder and decoder models, including multilingual and multimodal ones (BidirLM-Omni, EuroBERT, EuroLLM, CroissantLLM), and on efficient techniques such as the Universal Logit Distillation Loss for cross-tokenizer distillation. CIFRE PhD with Diabolocom.
+> Member of Technical Staff on the pretraining team at Cohere, scaling up model training, and PhD candidate at CentraleSupélec (Université Paris-Saclay), advised by Pierre Colombo and Céline Hudelot, defending in early 2027. PhD research on large-scale training of multilingual and multimodal LLMs, both decoders and encoders (EuroLLM, CroissantLLM, BidirLM-Omni, EuroBERT), and on distillation, such as the Universal Logit Distillation Loss for cross-tokenizer distillation.
 
 Machine-readable copies of everything on this site: [timeline.json](https://nicolas-bzrd.github.io/data/timeline.json) (all entries, structured), [publications.md](https://nicolas-bzrd.github.io/publications.md) (full abstracts, plain text). The home page also embeds schema.org JSON-LD (`ProfilePage`, `Person`, `ScholarlyArticle`).
 
